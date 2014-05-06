@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="css/map.css">
+<google-map id="campus-map"
+            events="map.events"
+            center="map.center"
+            zoom="map.zoom"
+            draggable="true"
+            options="map.options">
+
+            <polygon
+              ng-repeat="poly in map.polygons"
+                  path='poly.path'
+                  fill='poly.fill'
+                  stroke='poly.stroke'
+                  clickable='poly.clickable'
+                  draggable='poly.draggable'
+                  editable='poly.editable'
+                  visible='poly.visible'
+                  static='true'>
+            </polygon>
+
+
+
+</google-map>
+<!-- <nav class="navbar navbar-default navbar-fixed-bottom maps-navbar" role="navigation">
+  <div class="container">
+    ...
+  </div>
+</nav> -->

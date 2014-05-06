@@ -1,0 +1,23 @@
+<!-- FEED SELECTOR MODAL -->
+
+        <div style="background: rgba(9, 52, 122, 0.95); border-bottom: 4px solid rgb(241, 99, 42);" class="modal-header">
+            <button type="button" style="font: #fff;" ng-click="cancel()" class="close pull-right" aria-hidden="true">&times;</button>
+            <p style="color: #fff;">Add a custom resource:</p>
+        </div>
+        <div class="modal-body">
+            <form name="addResource" role="form">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name:</label>
+                <input required ng-model="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Resource Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Resource URL:</label>
+                <input required ng-model="path" type="url" class="form-control" id="exampleInputPassword1" placeholder="Enter URL">
+              </div>
+              <span class="error" ng-show="addResource.input.$error.required">Required!</span>
+              <span class="error" ng-show="addResource.input.$error.url">Not valid url!</span>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" ng-click="addCustomResource($event)">Submit</button>
+        </div>

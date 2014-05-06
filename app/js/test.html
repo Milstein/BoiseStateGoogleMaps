@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="plunker">
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+  
+    <script>
+      angular.module('plunker', ['ui.bootstrap']);
+      var ModalDemoCtrl = function ($scope, $modal, $log) {
+          
+          /* Note: The hard coded user object has been commented out, as 
+             it is now passed as an object parameter from the HTML template.
+          */
+          /* $scope.user = {
+              user: 'name',
+              password: null
+          };*/
+      
+          $scope.open = function (user) {
+              $scope.user = user;
+              $modal.open({
+                  templateUrl: 'myModalContent.html',
+                  backdrop: true,
+                  windowClass: 'modal',
+                  controller: function ($scope, $modalInstance, $log, user) {
+                      $scope.user = user;
+                      $scope.submit = function () {
+                          $log.log('Submiting user info.');
+                          $log.log(JSON.stringify(user));
+                          $modalInstance.dismiss('cancel');
+                      }
+                      $scope.cancel = function () {
+                          $modalInstance.dismiss('cancel');
+                      };
+                  },
+                  resolve: {
+                      user: function () {
+                          return $scope.user;
+                      }
+                  }
+              });
+          };
+      };  
+  </script>
+
+  <div ng-controller="ModalDemoCtrl">
+      <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+              <h3>Im a modal!</h3>
+          </div>
+          <form ng-submit="submit()">
+            <div class="modal-body">
+              <label>User name</label>
+              <input type="text" ng-model="user.user" />
+              <label>Password</label>
+              <input type="password" ng-model="user.password" />
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                <input type="submit" class="btn primary-btn" value="Submit" />
+            </div>
+          </form>
+      </script>
+  
+      <button class="btn" ng-click="open({user: 'username', password: 'password'})">Open me!</button>
+      <div ng-show="user.password">Got back from modal: {{ user | json}}</div>
+  </div>
+  </body>
+</html>

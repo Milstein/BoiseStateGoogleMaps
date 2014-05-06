@@ -1,0 +1,10 @@
+.angular-google-map-container {
+  margin-top:10px;
+}
+
+@media screen and (min-width: 820px) {
+  #map-navbar {
+    background-color: green !important;
+    float: left !important;
+  }
+}

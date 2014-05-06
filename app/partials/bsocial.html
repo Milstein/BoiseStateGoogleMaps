@@ -1,0 +1,78 @@
+<div class="container-fluid" ngController="BSocialController">
+	<!-- Instagram -->
+	<h3>Instagram</h3>
+	<div class="row">
+		<div class="panel panel-default">
+	  		<div class="panel-body">
+				  <div ng-repeat="post in instagramPosts | limitTo: 6 | orderBy: 'SortTime':true" class="col-xs-4 col-sm-4 col-md-2">
+				  	<a target="_BLANK" ng-href="{{post.link}}"><img ng-src="{{post.images.standard_resolution.url}}" width="100%" class="img-thumbnail" /></a>
+				  </div>
+				</div>
+	  		</div>
+		</div>
+	</div>
+	<div style="margin-left: 10px; margin-right: 10px;" class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<h3><img src="images/twitter.png" height="30px" class="pull-left"/>&nbsp;Twitter</h3>
+			<div class="panel-body">
+				<div class="list-group">
+				  <a target="_BLANK" style="clear: both; min-height: 120px;" ng-repeat="post in twitterPosts | orderBy: 'SortTime':true" class="list-group-item" ng-href="{{post.Link}}">
+				  	<span class="text-muted pull-right">{{post.Time}}</span>
+				  	<h4>{{post.Author}} <small>{{post.UserName}}</small></h4>
+				    <img width="50px" style="margin-right: 10px;" class="pull-left" ng-src="{{post.UserImage}}" />
+				    <div ng-bind-html="post.Content" class="media-body">
+				    <h4 class="media-heading"><img width="20px" src="images/twitter.png" /> {{post.Author}} <small>{{post.Time}}</small></h4>
+				    {{post.ListContent}}<br/>
+				  </div>
+				  </a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<h3><img src="images/facebook.png" height="30px" class="pull-left"/>&nbsp;Facebook</h3>
+			<div class="panel-body">
+				<!--<div ng-repeat="post in facebookPosts | orderBy: 'SortTime':true" class="media">
+					<h4 class="media-heading"><img src="images/facebook.png" height="20px" />
+						{{post.UserName}} <small>{{post.Time}}</small></h4>
+					<a class="pull-left" href="#">
+						<img width="70px" class="media-object" ng-click="openFacebookModal($event, post)" ng-src="{{post.ContentImageHigh}}">
+					</a>
+					<div ng-bind-html="post.Content" class="media-body">
+						{{post.Content}}<br/>
+					</div>
+				</div>-->
+				<div class="list-group">
+				  <a target="_BLANK" style="clear: both; min-height: 120px;" ng-repeat="post in facebookPosts | orderBy: 'SortTime':true" class="list-group-item" ng-href="{{post.Link}}">
+				  	<span class="text-muted pull-right">{{post.Time}}</span>
+				  	<h4>{{post.Author}} <small>{{post.UserName}}</small></h4>
+				    <img width="50px" class="pull-left" ng-click="openFacebookModal($event, post)" ng-src="{{post.ContentImageHigh}}" style="margin-right: 10px;" />
+				    <div ng-bind-html="post.Content" class="media-body">
+				    <h4 class="media-heading"><img width="20px" src="images/twitter.png" /> {{post.Author}} <small>{{post.Time}}</small></h4>
+				    {{post.ListContent}}<br/>
+				  </div>
+				  </a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="margin-left: 10px; margin-right: 10px;" class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<h3><img src="images/google.png" height="30px" class="pull-left"/>&nbsp;Google+</h3>
+			<div class="panel-body">
+				<div class="list-group">
+					<a target="_BLANK" style="clear: both; min-height: 120px;" ng-repeat="post in googlePlusPosts | orderBy: 'SortTime':true" class="list-group-item" ng-href="{{post.Link}}">
+						<span class="text-muted pull-right">{{post.Time}}</span>
+						<h4>{{post.Author}} <small>{{post.UserName}}</small></h4>
+						<img width="50px" style="margin-right: 10px;" class="pull-left" ng-src="{{post.UserImage}}" />
+						<div ng-bind-html="post.Content" class="media-body">
+						<h4 class="media-heading"><img width="20px" src="images/twitter.png" /> {{post.Author}} <small>{{post.Time}}</small></h4>
+						{{post.ListContent}}<br/>
+					</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+</div>

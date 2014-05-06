@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<h2><span class="glyphicon glyphicon-book"></span>&nbsp;Course Search</h2>
+	<div ngController="CourseSearchCtrl">
+		<div class="col-xs-12 col-sm-4">
+			<input type="text" ng-model="subjectInput" class="form-control" placeholder="Filter Subjects">
+			<div id="subject" class="list-group">
+				<a ng-class="($index==selectedSubject) ? 'active': ''" ng-repeat="subject in subjects| filter: subjectInput" href="#subjectCourses" ng-click="getSubjectCourses($event, subject, $index)" class="list-group-item">
+					{{subject.SubjectName}}
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div id="subjectCourses" class="list-group">
+				<a ng-class="($index==selectedCourse) ? 'active': ''" ng-repeat="course in subjectCourses" href="#" ng-click="getCourseSections($event, course, $index)" class="list-group-item">
+					{{course.CourseName}} - {{course.CourseTitle}}
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div id="sections" class="list-group" ng-repeat="group in groups">
+				<h4>{{group.label}}</h4>
+				<li class="list-group-item" ng-repeat="section in group.sections">
+					{{section.CourseTitle}}<br />
+					<b>Section:</b> {{section.SectionNumber}}<br />
+					<b>Instructor:</b> {{section.Instructor}}<br />
+					<b>Time:</b> {{section.MeetingTime}}<br />
+					<b>Room:</b> {{section.BldgRoom}}<br />
+					<b>Type:</b> {{section.CourseInstructionType}}<br />
+					<b>Start/End:</b> {{section.ClassStartDate}} - {{section.ClassEndDate}}<br />
+				</li>
+			</div>
+
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,63 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" style="padding-top: 10px" href="#"><img src="images/logo-nav-orange.png" height="30px" /></a>
+      <!--<a class="navbar-brand-mobile" href="#"><img src="images/logo-nav-orange-mobile.png" height="30px" /></a>-->
+
+    </div>
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+
+      <ul style="padding-right: 10px;" class="nav navbar-nav navbar-right">
+        <li>
+              <div class="btn-group navbar-btn">
+                <button ng-click="goToStudentDashboard()" class="btn btn-default"><img src="images/user.jpg" height="20px" class="img-circle" /> Phil Merrell</button>
+                <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle"><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a target="_blank" href="https://mail.google.com/a/u.boisestate.edu"><span class="glyphicon glyphicon-envelope"></span> BroncoMail <span class="badge">42</span></a></li>
+                  <li><a target="_blank" href="https://mail.google.com/a/boisestate.edu"><span class="glyphicon glyphicon-list-alt"></span> My Grades </li>
+                  <li><a target="_blank" href="https://blackboard.boisestate.edu/"><span class="glyphicon glyphicon-book"></span> Blackboard </li>
+                  <li><a target="_blank" href=""><span class="glyphicon glyphicon-list"></span> Student Center </li>
+                  <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Alerts <span class="badge">1</span></a></li>
+                  <li class="divider"></li>
+                  <li><a href="#/EmployeeDashboard"><span class="glyphicon glyphicon-user"></span> Employee View </a></li>
+                  <li><a href="#/AffiliateDashboard"><span class="glyphicon glyphicon-user"></span> Affiliate View </a></li>
+                  <li><a href="#/AlumnusDashboard"><span class="glyphicon glyphicon-user"></span> Alumnus View </a></li>
+                  <li><a href="#/EmeritusDashboard"><span class="glyphicon glyphicon-user"></span> Emeritus View </a></li>
+                  <li><a href="#/PortalOnlyDashboard"><span class="glyphicon glyphicon-user"></span> Portal Only View </a></li>
+                </ul>
+              </div>
+        </li>
+        <li ng-repeat="menuItem in menu | limitTo: 4" ng-class="getClass('{{menuItem.path}}')">
+          <a ng-if="!menuItem.external" class="nav-menu-link" ng-href="#{{menuItem.path}}"><span class="{{menuItem.icon}}"></span> {{menuItem.name}}</a>
+          <a ng-if="menuItem.external" target="_BLANK" class="nav-menu-link" ng-href="{{menuItem.path}}"><span class="{{menuItem.icon}}"></span> {{menuItem.name}}</a>
+        </li>
+        <!--<li ng-class=""><a href="#"><span class="glyphicon glyphicon-flag"></span> Athletics</a></li>
+        <li ng-class=""><a href="#"><span class="glyphicon glyphicon-map-marker"></span> Map</a></li>-->
+
+        <li class="dropdown">
+          <a ng-class="getClass('/BSocial')" href="/BSocial" class="dropdown-toggle">More <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li role="presentation" class="dropdown-header">Quick Links:</li>
+            <li ng-repeat="menuItem in menu" ng-if="$index > 3">
+              <a ng-if="!menuItem.external" ng-href="#{{menuItem.path}}">{{menuItem.name}}</a>
+              <a ng-if="menuItem.external" target="_BLANK" ng-href="{{menuItem.path}}">{{menuItem.name}}</a>
+            </li>
+            <li role="presentation" class="divider"></li>
+            <li><span class="label label-default">New</span><a href="#/EditMenu">Customize Menu</a></li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>

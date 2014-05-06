@@ -1,0 +1,74 @@
+<div ng-controller="AffiliateDashboardCtrl">
+  <div parallax style="margin-top: 10px; background-image: url('images/splash.jpg'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;" class="jumbotron">
+    <div class="" style="padding: 10px; width: 620px; background-color: rgba(255,255,255,0.6);">
+        <img style="border: 3px solid white" align="left" class="img-circle" src="images/emeritus.jpg" height="150px" />
+          <h1>Professor X</h1>
+          <h2>Emeritus</h2>
+        <div class="btn-group">
+          <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> BroncoMail</button>-->
+          <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list-alt"></span> My Grades</button>-->
+          <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-book"></span> Blackboard</button>-->
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> PeopleSoft</button>
+          <!--<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-list"></span> Alerts <span class="label label-danger">1</span></button>-->
+        </div>
+
+      <!--
+      <div class="row">
+        <div style="margin: 10px; float: left;">
+            <center><img width="50px" src="images/badge-major.png" alt="Major in Philosphy"></center>
+            <div class="caption">
+              <h5>Major in Philosophy</h5>
+            </div>
+          </div>
+          <div style="margin: 10px; float: left;">
+            <center><img width="50px" src="images/badge-minor.png" alt="Minor in Communications"></center>
+            <div class="caption">
+              <h5>Minor in Communications</h5>
+            </div>
+          </div>
+          <div style="margin: 10px; float: left;">
+            <center><img width="50px" src="images/badge-deanslist.png" alt="Dean's List Fall 05"></center>
+            <div class="caption">
+              <h5>Dean's List Fall 05</h5>
+            </div>
+          </div>
+          <div style="margin: 10px; float: left;">
+            <center><img width="50px" src="images/badge-deanslist.png" alt="Minor in Communications"></center>
+            <div class="caption">
+              <h5>Dean's List Spring 06</h5>
+            </div>
+          </div>
+      </div>-->
+    </div>
+    <div style="margin-top: -75px; padding-right: 20px;" class="pull-right lead"><span style="color: rgba(255,255,255, 0.7); font-size: 4em;">45°</span></div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title"><span class="glyphicon glyphicon-book"></span> Emeritus View Stuff Goes Here. </h1>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="col-xs-6 col-md-4">
+        <!-- CALENDAR -->
+        <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-calendar"></span> Calendar: </h3>
+        </div>
+        <ul class="list-group">
+          <li ng-repeat="calendarItem in calendar | limitTo: 5" class="list-group-item"><a href="#">{{calendarItem.Title}}</a></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

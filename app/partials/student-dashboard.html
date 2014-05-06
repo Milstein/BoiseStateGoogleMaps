@@ -1,0 +1,146 @@
+<div ng-controller="StudentDashboardCtrl">
+	<div parallax style="margin-top: 10px; background-image: url('images/splash.jpg'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;" class="jumbotron">
+		<div class="" style="padding: 10px; width: 620px; background-color: rgba(255,255,255,0.6);">
+				<img style="border: 3px solid white" align="left" class="img-circle" src="images/phil.png" height="150px" />
+			  	<h1>Phil Merrell</h1>
+				<h3>Major: Philosophy <small><span class="label label-success">On Track</span></h3>
+				<h4>Minor: Communication</h4>
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> BroncoMail</button>
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list-alt"></span> My Grades</button>
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-book"></span> Blackboard</button>
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> Student Center</button>
+				  <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-list"></span> Alerts <span class="label label-danger">1</span></button>
+				</div>
+
+			<!--
+			<div class="row">
+				<div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-major.png" alt="Major in Philosphy"></center>
+			      <div class="caption">
+			        <h5>Major in Philosophy</h5>
+			      </div>
+			    </div>
+			    <div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-minor.png" alt="Minor in Communications"></center>
+			      <div class="caption">
+			        <h5>Minor in Communications</h5>
+			      </div>
+			    </div>
+			    <div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-deanslist.png" alt="Dean's List Fall 05"></center>
+			      <div class="caption">
+			        <h5>Dean's List Fall 05</h5>
+			      </div>
+			    </div>
+			    <div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-deanslist.png" alt="Minor in Communications"></center>
+			      <div class="caption">
+			        <h5>Dean's List Spring 06</h5>
+			      </div>
+			    </div>
+			</div>-->
+		</div>
+		<div style="margin-top: -75px; padding-right: 20px;" class="pull-right lead"><span style="color: rgba(255,255,255, 0.7); font-size: 4em;">45°</span></div>
+	</div>
+
+	<!-- ACADEMICS -->
+	<div class="container-fluid">
+		<div class="row">
+		  <div class="col-xs-12 col-md-8">
+		  	<div class="panel panel-default">
+		  		<div class="panel-heading">
+		  			<h2 class="panel-title"><span class="glyphicon glyphicon-book"></span> Classes: </h2>
+		  		</div>
+			  	<ul class="list-group">
+				  <li class="list-group-item">
+				  	<h3>HIST 112 <small>United States History </small></h3>
+				  	<b>Days:</b> Online<br/>
+				  	<b>Time:</b> Online<br/>
+				  	<b>Room:</b> Online<br/>
+				  	<b>Instructor:</b> Davies, Blaine ( <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:jschutt@boisestate.edu">email</a> )<br/>
+				  	<p>&nbsp;</p>
+				  	<div class="btn-group">
+					  <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn"></span> Announcements</button>-->
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-inbox"></span> Course Schedule</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Study Groups <span class="badge">5</span></button>
+					</div>
+
+
+							<div style="margin-top: 20px; font-size: 1.2em;" class="well">
+								<h4 class="panel-title">
+										<span class="glyphicon glyphicon-book"></span> Blackboard
+										<small><a href="#"><span class="glyphicon glyphicon-new-window"></span></a></small>
+								</h4>
+								<hr/>
+								<p><b>Recent Grades:</b> Project 3 - 100/100</p>
+								<p><b>Announcements:</b> Project 4 Due Date has changed...</p>
+								<p><b>Alerts:</b> No Alerts at this time.</p>
+								<p><b>Tasks:</b> No Tasks Due.</p>
+								<p><b>Calendar:</b> No calendar events have been posted for the next 7 days.</p>
+							</div>
+
+
+
+
+				  </li>
+				  <li class="list-group-item">
+				  	<h3>ITM 310 <small>Business Intelligence</small></h3>
+				  	<b>Days:</b> Tuesday<br/>
+				  	<b>Time:</b> 3:00PM-4:15PM<br/>
+				  	<b>Room:</b> MBEB3016 <a href="#" class=""><span class="glyphicon glyphicon-map-marker"></span> Map</a><br /><br/>
+				  	<b>Instructor:</b> Schutt, John R ( <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:jschutt@boisestate.edu">email</a> )<br/>
+				  	<p>&nbsp;</p>
+				  	<div class="btn-group">
+						  <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn"></span> Announcements</button>-->
+						  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-inbox"></span> Assignments <span class="badge">1</span></a></button>
+						  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-film"></span> Classroom Capture</button>
+						  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Desktop Capture</button>
+						  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Study Groups</button>
+						</div>
+				  </li>
+				  <li class="list-group-item">
+				  	<h3>CS 221 <small>Computer Science II</small></h3>
+				  	<b>Days:</b> Tuesday<br/>
+				  	<b>Time:</b> 3:00PM-4:15PM<br/>
+				  	<b>Room:</b> MBEB3016<br/>
+				  	<b>Instructor:</b> Some, Instructor (<a href="mailto:jschutt@boisestate.edu">email</a>)<br/>
+				  	<p>&nbsp;</p>
+				  	<div class="btn-group">
+					  <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn"></span> Announcements</button>-->
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-inbox"></span> Assignments</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-film"></span> Classroom Capture</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Desktop Capture</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Study Groups</button>
+					</div>
+				  </li>
+
+				</ul>
+			</div>
+		  </div>
+
+
+
+
+		  <div class="col-xs-6 col-md-4">
+		  	<!-- CALENDAR -->
+		  	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><span class="glyphicon glyphicon-calendar"></span> Calendar: </h3>
+				</div>
+				<ul class="list-group">
+					<li ng-repeat="calendarItem in calendar | limitTo: 5" class="list-group-item"><a href="#">{{calendarItem.Title}}</a></li>
+				</ul>
+		  	</div>
+		  	<!-- DRIVE    -->
+		  	<div class="panel panel-default">
+		  		<div class="panel-heading">
+		  			<h3 class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Drive: </h3>
+		  		</div>
+		  	</div>
+
+		  </div>
+		</div>
+	</div>
+
+</div>

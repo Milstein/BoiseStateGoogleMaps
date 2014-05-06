@@ -1,0 +1,34 @@
+<div class="container-fluid" ngController="CampusUpdateController">
+	<h2>myUpdate <small>Your Personal Campus News</small> <button ng-click="openCustomizeFeedModal($event)" type="button" class="btn btn-success btn-sm">Customize</button></h2>
+	<div class="panel">
+  		<div class="panel-body">
+  			<div class="media col-xs-12 col-sm-6 col-md-8">
+				<select class="form-control" ng-model="feed" ng-change="selectFeed()" ng-options="f.name for f in feeds">
+      				<option value="">Select a Feed</option>
+    			</select>
+    			<hr />
+				<div ng-repeat="article in campusFeed">
+					<div class="media-body">
+						<img class="image-thumbnail pull-left" style="margin-right: 5px;" width="64px" ng-src="{{article.Image}}" >
+						<h4 class="media-heading"><a target="_BLANK" ng-href="{{article.Link}}">{{article.Title}}</a></h4>
+						<p>
+							<span ng-bind-html="article.Description">{{article.Description}}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="media col-xs-12 col-sm-6 col-md-4">
+				<h3><span class="glyphicon glyphicon-calendar"></span> Events: </h3>
+				<div ng-repeat="event in campusEvents">
+					<a class="pull-left" href="#">
+						<!--<img class="media-object" width="64px" ng-src="{{event.Image}}" >-->
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading"><a ng-href="{{event.Link}}">{{event.Title}}</a></h4>
+						<p>{{event.Description}}</p>
+					</div>
+				</div>
+			</div> 		
+		</div>
+	</div>        
+</div>

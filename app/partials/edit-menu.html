@@ -1,0 +1,53 @@
+<div style="margin-top: 50px;" class="container-fluid" ngController="EditMenu">
+	<!--<input ng-model="item">
+	<button ng-click="addMenuItem()">-->
+	<div class="row">
+		<div class="col-md-4">
+			<table style="width: 100%;" class="table table-bordered">
+		        <thead>
+		            <tr>
+		                <th>Saved Items</th>
+		                <th></th>
+		            </tr>
+		        </thead>
+		        <tbody ui:sortable ng:model="menu">
+		            <tr ng:repeat="menuItem in menu" class="item" style="cursor: move;">
+		            	<td><span class="{{menuItem.icon}}"></span>&nbsp;{{menuItem.name}}</td>
+		            	<td width="50px"><button type="button" class="btn btn-default" ng-click="removeMenuItem(menuItem, $index)"><span class="glyphicon glyphicon-remove"></span></button></td>
+
+		            </tr>
+		        </tbody>
+		         <h3><img align="left" class="img-circle" src="images/phil.png" height="30px" />&nbsp;My Menu</h3>
+
+		        <p class="text-muted"><b>Tip:</b> Drag up and down to organize</p>
+		    </table>
+		</div>
+		<div class="col-md-8">
+			<table style="font-size: 1.2em; width:100%;" class="table table-hover">
+		        <tbody class="" ng-model="resources">
+		            <tr ng-repeat="resource in resources | filter: resourceInput">
+		            	<td width="200px">
+		            		<a ng-href="{{resource.path}}" style="height: 40px; display: block; color: #333;"><span class="{{resource.icon}}"></span>&nbsp;{{resource.name}}</a>
+		            	</td>
+		            	<td style="font-size: 0.9em;">{{resource.description}}</td>
+		            	<td>
+		            		<div ng-if="!resource.disabled">
+		            			<button type="button" ng-disabled="resource.disabled == true" class="btn btn-sm btn-default" ng-click="addToMenu(resource, $event);"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+		            		</div>
+		            		<div ng-if="resource.disabled">
+		            			<button type="button" ng-disabled="resource.disabled == true" class="btn btn-sm btn-default" ng-click="addToMenu(resource, $event);"><span class="glyphicon glyphicon-check"></span>Added</button>
+		            		</div>
+
+		            	</td>
+
+		            </tr>
+		        </tbody>
+		        <h3>More Resources <button type="button" class="btn btn-sm btn-info" ng-click="openCustomResourceModal($event)"><span class="glyphicon glyphicon-plus"></span>&nbsp;Create Custom</button></h3>
+		        <input type="text" ng-model="resourceInput" class="form-control" placeholder="Search Resources">
+		    </table>
+				<div ng-show="(resources|filter:resourceInput).length == 0"><a target="_blank" ng-href="http://search.boisestate.edu/?q={{resourceInput}}&site=boisestate.edu">Search Boise State for "{{resourceInput}}"</a></div>
+
+		</div>
+</div>
+
+</div>

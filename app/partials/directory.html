@@ -1,0 +1,16 @@
+<div class="container-fluid">
+	<h2><span class="glyphicon glyphicon-user"></span>&nbsp;Directory Search</h2>
+	<div ngController="DirectoryCtrl">
+		<div class="col-xs-12 col-sm-6">
+			<input type="text" ng-model="directoryInput" class="form-control" placeholder="Search by First Name, Last Name or Department" ng-keyup="searchDirectory(directoryInput)" />
+			<ul class="list-group">
+				<li ng-repeat="employee in employees" href="#" ng-click="" class="list-group-item repeat-item">
+					<h4>{{employee.FirstName}} {{employee.LastName}}</h4>
+					<p>{{employee.Title}} - {{employee.Department}}</p>
+					<p><span class="glyphicon glyphicon-envelope"></span>&nbsp;<a ng-href="mailto:{{employee.Email}}">{{employee.Email}}</a></p>
+					<p><span class="glyphicon glyphicon-phone"></span>&nbsp;<a ng-href="tel:208-{{employee.Telephone}}">{{employee.Telephone}}</a>
+				</li>
+			</ul>			
+		</div>
+	</div>
+</div>

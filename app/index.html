@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" ng-app="myBoiseState">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Welcome to myBoiseState. Login In">
+  <meta name="author" content="Boise State University">
+
+  <title>myBoiseState</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Optional theme
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
+  <link rel="stylesheet" href="css/bootstrap-switch.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/loading-bar.css">
+  <style>
+   .navbar-inverse { background: rgba(9, 52, 122, 0.95); border-bottom: 3px solid rgb(241, 99, 42); }
+   .item, .placeholder {
+    padding: 2px;
+    width: 50px;
+    height: 20px;
+    border: 1px solid #333;
+    background: #EEE;
+}
+.placeholder {
+    background: #AEF;
+}
+.nav.nav-center {
+    margin:0;
+    float:none;
+}
+/* you can also define the transition style
+   on the base class as well (.repeat-item) */
+.repeat-item.ng-enter,
+.repeat-item.ng-leave {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+}
+
+.repeat-item.ng-enter,
+.repeat-item.ng-leave.ng-leave-active {
+  opacity:0;
+}
+.repeat-item.ng-leave,
+.repeat-item.ng-enter.ng-enter-active {
+  opacity:1;
+}
+  </style>
+
+  <!--<link rel="stylesheet" href="css/app.css"/>-->
+</head>
+<body ng-controller="ApplicationController">
+
+  <!-- NAVIGATION -->
+  <ul navbar-responsive title=""></ul>
+  <!-- ALERTS -->
+  <div>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+  </div>
+  <!-- MAIN VIEW -->
+
+  <div ng-view></div>
+
+  <div class="footer"></div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angular/angular-sanitize.min.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
+  <script src="js/app.js"></script>
+  <!--<script src="http://notification.aws.af.cm/socket.io/socket.io.js"></script>-->
+  <!--<script src="js/ng-socket-io.min.js"></script>-->
+  <script src="js/bootstrap-switch.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/loading-bar.js"></script>
+  <script src="js/sortable.js"></script>
+  <script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>
+  <script src='bower_components/underscore/underscore-min.js'></script>
+  <script src='bower_components/angular-google-maps/dist/angular-google-maps.js'></script>
+
+
+
+  <!-- Latest compiled and minified JavaScript -->
+
+</body>
+</html>

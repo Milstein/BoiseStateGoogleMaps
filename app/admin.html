@@ -1,0 +1,34 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://notification.aws.af.cm/socket.io/socket.io.js"></script>
+<script>
+	var socket = io.connect('http://notification.aws.af.cm');
+
+	socket.on('init', function(data) {
+		console.log('You are connected.');
+	});
+
+	$(document).ready(function() {
+
+		$('#adminButton').click(function(){
+			var type = $('#type').val();
+			var msg = $('#msg').val();
+
+			//console.log(type);
+
+			socket.emit('admin:alert', {type: type, msg: msg});
+		});
+	});
+</script>
+<body>
+	<h1>Communication Admin</h1>
+	<select id="type" name="type">
+		<option>danger</option>
+		<option>success</option>
+		<option>warning</option>
+		<option>info</option>
+	</select>
+	<input id="msg" name="msg"></input>
+	<button id="adminButton">Submit</button>
+</body>
+</html>

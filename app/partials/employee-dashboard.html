@@ -1,0 +1,206 @@
+<script>
+	$('input[type="checkbox"]').bootstrapSwitch();
+</script>
+<div ng-controller="EmployeeDashboardCtrl">
+	<div parallax style="margin-top: 10px; background-image: url('images/splash.jpg'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;" class="jumbotron">
+		<div style="padding: 10px; width: 620px; background-color: rgba(255,255,255,0.6);">
+				<img style="border: 3px solid white" align="left" class="img-circle" src="images/cornelius.jpg" height="150px" />
+			  	<h1>Cornelius Northshire</h1>
+			  	<h2>Associate Professor</h2>
+				<div class="btn-group">
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> EmployeeMail</button>
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-calendar"></span> Calendar</button>
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-book"></span> Blackboard</button>
+				  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> Peoplesoft</button>
+					<div class="btn-group">
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span> myInsights <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" role="menu">
+					    <li><a href="#">Go to Pyramid</a></li>
+					    <li><a href="#">Go to Proclarity</a></li>
+					  </ul>
+					</div>
+				</div>
+
+			<!--
+			<div class="row">
+				<div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-major.png" alt="Major in Philosphy"></center>
+			      <div class="caption">
+			        <h5>Major in Philosophy</h5>
+			      </div>
+			    </div>
+			    <div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-minor.png" alt="Minor in Communications"></center>
+			      <div class="caption">
+			        <h5>Minor in Communications</h5>
+			      </div>
+			    </div>
+			    <div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-deanslist.png" alt="Dean's List Fall 05"></center>
+			      <div class="caption">
+			        <h5>Dean's List Fall 05</h5>
+			      </div>
+			    </div>
+			    <div style="margin: 10px; float: left;">
+			      <center><img width="50px" src="images/badge-deanslist.png" alt="Minor in Communications"></center>
+			      <div class="caption">
+			        <h5>Dean's List Spring 06</h5>
+			      </div>
+			    </div>
+			</div>-->
+		</div>
+		<div style="margin-top: -75px; padding-right: 20px;" class="pull-right lead"><span style="color: rgba(255,255,255, 0.7); font-size: 4em;">45°</span></div>
+	</div>
+
+	<!-- ACADEMICS -->
+	<div class="container-fluid">
+		<div class="row">
+		  <div class="col-xs-12 col-md-8">
+		  	<div class="panel panel-default">
+		  		<div class="panel-heading">
+		  			<h2 class="panel-title"><span class="glyphicon glyphicon-book"></span> Classes: </h2>
+		  		</div>
+			  	<ul class="list-group">
+				  <li class="list-group-item">
+				  	<h3>HIST 112 <small>United States History </small></h3>
+				  	<b>Days:</b> Online<br/>
+				  	<b>Time:</b> Online<br/>
+				  	<b>Room:</b> Online<br/>
+				  	<b>Section:</b> 002<br/>
+				  	<p>&nbsp;</p>
+				  	<div class="btn-group">
+					  <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn"></span> Announcements</button>-->
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-inbox"></span> Course Schedule</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Study Groups <span class="badge">5</span></button>
+					</div>
+
+					<div style="margin-top: 10px;" class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+					          <span class="glyphicon glyphicon-cog"></span> Course Admin
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseOne" class="panel-collapse collapse in">
+					      <div class="panel-body">
+					      	<p><b>Push Notifications:</b> <button type="button" class="btn btn-default">Request</button></p>
+					        <p><b>LMS Middleware:</b> <button type="button" class="btn btn-default">Request Blackboard</button></p></p>
+									<p><b>Course Scheduler:</b> <input type="checkbox" checked name="schedule" /></p>
+									<p><b>Classroom Capture:</b> <button type="button" class="btn btn-default">Request</button></p>
+									<p><b>Desktop Capture:</b> <button type="button" disabled class="btn btn-default">Requested</button></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+
+				  </li>
+				  <li class="list-group-item">
+				  	<h3>ITM 310 <small>Business Intelligence</small></h3>
+				  	<b>Days:</b> Tuesday<br/>
+				  	<b>Time:</b> 3:00PM-4:15PM<br/>
+				  	<b>Room:</b> MBEB3016 <a href="#" class=""><span class="glyphicon glyphicon-map-marker"></span> Map</a><br />
+				  	<b>Section:</b> 001<br/>
+				  	<p>&nbsp;</p>
+				  	<div class="btn-group">
+					  <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn"></span> Announcements</button>-->
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-inbox"></span> Assignments <span class="badge">1</span></a></button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-film"></span> Classroom Capture</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Desktop Capture</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Study Groups</button>
+					</div>
+
+					<div style="margin-top: 10px;" class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+					          <span class="glyphicon glyphicon-cog"></span> Course Admin
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseOne" class="panel-collapse collapse in">
+					      <div class="panel-body">
+					      	<form class="form-inline">
+					      		<p><b>Push Notifications:</b> <input type="text" placeholder="Type Message..." class="form-control" /><button type="button" class="btn btn-danger">Send</button></p>
+					      	</form>
+										<p><b>LMS Middleware:</b> <button type="button" class="btn btn-default">Request Blackboard</button></p></p>
+										<p><b>Course Scheduler:</b> <input type="checkbox" checked name="schedule" /></p>
+										<p><b>Classroom Capture:</b> <button type="button" disabled class="btn btn-default">Enabled</button></p>
+										<p><b>Desktop Capture:</b> <button type="button" disabled class="btn btn-default">Enabled</button></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+				  </li>
+				  <li class="list-group-item">
+				  	<h3>CS 221 <small>Computer Science II</small></h3>
+				  	<b>Days:</b> Tuesday<br/>
+				  	<b>Time:</b> 3:00PM-4:15PM<br/>
+				  	<b>Room:</b> MBEB3016<br/>
+				  	<b>Section:</b> 003<br/>
+				  	<p>&nbsp;</p>
+				  	<div class="btn-group">
+					  <!--<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-bullhorn"></span> Announcements</button>-->
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-inbox"></span> Assignments</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Desktop Capture</button>
+					  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> Study Groups</button>
+					</div>
+
+
+					<div style="margin-top: 10px;" class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+					          <span class="glyphicon glyphicon-cog"></span> Course Admin
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseOne" class="panel-collapse collapse in">
+					      <div class="panel-body">
+					      	<p><b>Push Notifications:</b> <button type="button" class="btn btn-default">Request</button></p>
+									<p><b>LMS Middleware:</b> <button type="button" class="btn btn-default">Request Blackboard</button></p></p>
+							<p><b>Course Scheduler:</b> <input type="checkbox" checked name="schedule" /></p>
+							<p><b>Classroom Capture:</b> <button type="button" disabled class="btn btn-default">Denied</button></p>
+							<p><b>Desktop Capture:</b> <button type="button" disabled class="btn btn-default">Enabled</button></p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+
+				  </li>
+
+				</ul>
+			</div>
+		  </div>
+
+
+
+
+		  <div class="col-xs-6 col-md-4">
+		  	<!-- CALENDAR -->
+		  	<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><span class="glyphicon glyphicon-calendar"></span> Calendar: </h3>
+				</div>
+				<ul class="list-group">
+					<li ng-repeat="calendarItem in calendar | limitTo: 5" class="list-group-item"><a href="#">{{calendarItem.Title}}</a></li>
+				</ul>
+		  	</div>
+		  	<!-- DRIVE    -->
+		  	<div class="panel panel-default">
+		  		<div class="panel-heading">
+		  			<h3 class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Drive: </h3>
+		  		</div>
+		  	</div>
+
+		  </div>
+		</div>
+	</div>
+
+</div>
