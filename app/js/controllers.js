@@ -429,129 +429,6 @@ myBoiseStateControllers.controller('CampusUpdateController', ['$scope', '$http',
         };
 }]);
 
-myBoiseStateControllers.controller('CampusMapCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout){
-  var fusionTableQueryURL = 'https://www.googleapis.com/fusiontables/v1/query?sql=SELECT%20%27' +
-  'name%27%2C%27' +
-  'geometry%27%2C%27' +
-  'description%27%2C%27' +
-  'Photo1%27%2C%27' +
-  'tags%27%2C%27' +
-  'feature_subtype%27%2C%27' +
-  'title%27%2C%27' +
-  'indoor%27' +
-  'FROM%201E7EdChSMT6erylIRXmc7H7LiBXpejc0x-0ohtQ%20' +
-  'WHERE%20%27' +
-  'In_Mobile_Map%27%20CONTAINS%20IGNORING%20CASE%20%27yes%27%20' +
-  'AND%20%27geometry%27%20CONTAINS%20IGNORING%20CASE%20%27' +
-  'polygon%27' +
-  '&key=AIzaSyBs9e1Cf1YTUg8ZAJ5-E1WvCLIGqaZwYnA';
-
-
-
-
-  $scope.map = {
-    center: {
-      latitude: -22.840109991554,
-      longitude: -43.660461902618
-    },
-    zoom: 8,
-    options: {
-      overviewMapControl: true,
-      panControl: false,
-      zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.LARGE,
-        position: google.maps.ControlPosition.RIGHT_BOTTOM
-      }
-    },
-    polygons: []
-  };
-
-  var polys = [
-    {
-        clickable: true,
-        draggable: false,
-        editable: false,
-        visible: true,
-        geodesic: false,
-        stroke: {weight: 1,color:"#000080", opacity : 1},
-        fill:{color: "#FFCE00", opacity : 1},
-        path:[
-            {latitude: -22.840109991554, longitude: -43.604843616486},
-            {latitude: -22.895785581504, longitude: -43.660461902618},
-            {latitude: -22.923614814482, longitude: -43.480560779572},
-            {latitude: -22.840109991554, longitude: -43.604843616486}
-        ]
-    },
-    {
-        clickable: true,
-        draggable: false,
-        editable: false,
-        visible: true,
-        geodesic: false,
-        stroke: {weight: 1,color:"#000080", opacity : 1},
-        fill:{color: "#FFCE00", opacity : "0.3"},
-        path:[
-            {latitude: -22.220105243267, longitude: -42.533525750041},
-            {latitude: -22.221535457024, longitude: -42.510480210185},
-            {latitude: -22.241159694484, longitude: -42.517046257854},
-            {latitude: -22.237336361699, longitude: -42.531315609813},
-            {latitude: -22.227633565887, longitude: -42.534770295024},
-            {latitude: -22.220105243267, longitude: -42.533525750041}
-        ]
-    },
-    {
-        clickable: true,
-        draggable: false,
-        editable: false,
-        visible: true,
-        geodesic: true,
-        stroke: {weight: 1,color:"#000080", opacity : 1},
-        fill:{color: "#0A67A3", opacity : "0.3"},
-        path:[
-            {latitude: -22.912122112782, longitude: -43.233883213252},
-            {latitude: -22.912658229953, longitude: -43.233333360404},
-            {latitude: -22.913135051277, longitude: -43.232568930835},
-            {latitude: -22.914049160006, longitude: -43.231040071696},
-            {latitude: -22.915007732268, longitude: -43.229344915599},
-            {latitude: -22.915096671619, longitude: -43.229065965861},
-            {latitude: -22.914958321493, longitude: -43.228862117976},
-            {latitude: -22.91306587523, longitude: -43.227215241641},
-            {latitude: -22.911054813301, longitude: -43.225868772715},
-            {latitude: -22.910516219169, longitude: -43.230718206614},
-            {latitude: -22.910317334098, longitude: -43.231544326991},
-            {latitude: -22.910335246119, longitude: -43.231946658343},
-            {latitude: -22.910432218057, longitude: -43.2324991934},
-            {latitude: -22.9106644563, longitude: -43.233437966555},
-            {latitude: -22.910508807309, longitude: -43.233000766486},
-            {latitude: -22.9113932865, longitude: -43.2337786071},
-            {latitude: -22.912122112782, longitude: -43.233883213252}
-        ]
-    }
-  ];
-
-  $scope.$on('$viewContentLoaded', function () {
-    var mapHeight = window.innerHeight - 54; // top navbar, bottom navbar
-    $("#campus-map .angular-google-map-container").height(mapHeight);
-  });
-
-  $timeout(function() {
-    $scope.map.polygons = polys;
-    $scope.$apply();
-  });
-
-
-  // $http.get(fusionTableQueryURL).success(function(data){
-  //   $scope.buildings = [];
-  //
-  //   data.rows.forEach(function(el, ind, arr) {
-  //     if(el[5] == 'principal') {
-  //      $scope.buildings.push(el);
-  //    }
-  //   })
-  //
-  // });
-}]);
-
 myBoiseStateControllers.controller('EmployeeDashboardCtrl', ['$scope', 'profile', function($scope, profile ){
 
 
@@ -666,6 +543,165 @@ myBoiseStateControllers.controller('StudentDashboardCtrl', ['$scope', 'profile' 
     "AllDay": true
     }
   ];
+}]);
 
+myBoiseStateControllers.controller('CampusMapCtrl', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+
+  var maxIndoorZoom = 12,
+      zoom = 17;
+
+  var map,
+      principalLayer;
+
+  var boiseStateCenter = {
+    latitude: 43.601789,
+    longitude: -116.202339
+  };
+
+  var instantiateMap = function (mapInstance) {
+    map = mapInstance;
+
+    /********************************************************
+    * Create fusion table Layer, add listeners to style layer,
+    * finally set layer on the map.
+    ********************************************************/
+    principalLayer = new google.maps.FusionTablesLayer({
+      query: {
+        select: 'geometry',
+        from: '1E7EdChSMT6erylIRXmc7H7LiBXpejc0x-0ohtQ',
+        where: '\'In_Mobile_Map\' CONTAINS IGNORING CASE \'yes\' AND \'feature_subtype\' CONTAINS IGNORING CASE \'principal\''
+      },
+      styles: [{
+        where: '\'feature_subtype\' CONTAINS IGNORING CASE \'principal\'',
+        polygonOptions: {
+          fillColor: "#3399cc",
+          fillOpacity: '0.01',
+          strokeColor: "#3399cc",
+          strokeWeight: 2.5
+        }
+      }]
+    });
+
+    principalLayer.setMap(mapInstance);
+  };
+
+
+  $scope.map = {
+    center: boiseStateCenter,
+    zoom: 17,
+    options: {
+      overviewMapControl: true,
+      panControl: false,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.RIGHT_BOTTOM
+      }
+    },
+    events: {
+
+      tilesloaded: function(map) {
+        $scope.$apply(function() {
+          instantiateMap(map);
+        });
+      },
+
+      zoom_changed: function() {
+        console.log(map);
+        principalLayer = new google.maps.FusionTablesLayer({
+          query: {
+            select: 'geometry',
+            from: '1E7EdChSMT6erylIRXmc7H7LiBXpejc0x-0ohtQ',
+            where: '\'In_Mobile_Map\' CONTAINS IGNORING CASE \'yes\' AND \'feature_subtype\' CONTAINS IGNORING CASE \'principal\''
+          },
+          styles: [{
+            where: '\'feature_subtype\' CONTAINS IGNORING CASE \'principal\'',
+            polygonOptions: {
+              fillColor: "#FFFFFF",
+              fillOpacity: 1,
+              strokeColor: "#FFFFFF",
+              strokeWeight: 2.5
+            }
+          }]
+        });
+
+        principalLayer.setMap(map);
+      }
+
+    },
+    polygons: []
+  };
+
+  var polys = [
+    {
+        clickable: true,
+        draggable: false,
+        editable: false,
+        visible: true,
+        geodesic: false,
+        stroke: {weight: 1,color:"#000080", opacity : 1},
+        fill:{color: "#FFCE00", opacity : 1},
+        path:[
+            {latitude: -22.840109991554, longitude: -43.604843616486},
+            {latitude: -22.895785581504, longitude: -43.660461902618},
+            {latitude: -22.923614814482, longitude: -43.480560779572},
+            {latitude: -22.840109991554, longitude: -43.604843616486}
+        ]
+    },
+    {
+        clickable: true,
+        draggable: false,
+        editable: false,
+        visible: true,
+        geodesic: false,
+        stroke: {weight: 1,color:"#000080", opacity : 1},
+        fill:{color: "#FFCE00", opacity : "0.3"},
+        path:[
+            {latitude: -22.220105243267, longitude: -42.533525750041},
+            {latitude: -22.221535457024, longitude: -42.510480210185},
+            {latitude: -22.241159694484, longitude: -42.517046257854},
+            {latitude: -22.237336361699, longitude: -42.531315609813},
+            {latitude: -22.227633565887, longitude: -42.534770295024},
+            {latitude: -22.220105243267, longitude: -42.533525750041}
+        ]
+    },
+    {
+        clickable: true,
+        draggable: false,
+        editable: false,
+        visible: true,
+        geodesic: true,
+        stroke: {weight: 1,color:"#000080", opacity : 1},
+        fill:{color: "#0A67A3", opacity : "0.3"},
+        path:[
+            {latitude: -22.912122112782, longitude: -43.233883213252},
+            {latitude: -22.912658229953, longitude: -43.233333360404},
+            {latitude: -22.913135051277, longitude: -43.232568930835},
+            {latitude: -22.914049160006, longitude: -43.231040071696},
+            {latitude: -22.915007732268, longitude: -43.229344915599},
+            {latitude: -22.915096671619, longitude: -43.229065965861},
+            {latitude: -22.914958321493, longitude: -43.228862117976},
+            {latitude: -22.91306587523, longitude: -43.227215241641},
+            {latitude: -22.911054813301, longitude: -43.225868772715},
+            {latitude: -22.910516219169, longitude: -43.230718206614},
+            {latitude: -22.910317334098, longitude: -43.231544326991},
+            {latitude: -22.910335246119, longitude: -43.231946658343},
+            {latitude: -22.910432218057, longitude: -43.2324991934},
+            {latitude: -22.9106644563, longitude: -43.233437966555},
+            {latitude: -22.910508807309, longitude: -43.233000766486},
+            {latitude: -22.9113932865, longitude: -43.2337786071},
+            {latitude: -22.912122112782, longitude: -43.233883213252}
+        ]
+    }
+  ];
+
+  $scope.$on('$viewContentLoaded', function () {
+    var mapHeight = window.innerHeight - 54; // top navbar, bottom navbar
+    $("#campus-map .angular-google-map-container").height(mapHeight);
+  });
+
+  $timeout(function() {
+    $scope.map.polygons = polys;
+    $scope.$apply();
+  }, 100);
 
 }]);
